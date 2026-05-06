@@ -1,1 +1,12 @@
-
+{
+  "name": "ai-agent-cli",
+  "version": "1.0.0",
+  "description": "AI Agent CLI Tool",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^0.1.2",
+    "dotenv": "^16.4.7",
+    "openai": "^4.86.1"
+  }
+}
