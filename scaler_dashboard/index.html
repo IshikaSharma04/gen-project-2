@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaler | Learning Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+
+        <!-- Left Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <span class="logo-text">Scaler</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" id="nav-dashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-curriculum">
+                    <i class="fas fa-book-open"></i>
+                    <span>Curriculum</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-live">
+                    <i class="fas fa-video"></i>
+                    <span>Live Classes</span>
+                    <span class="live-badge">Live</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-mentorship">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Mentorship</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-community">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="streak-card">
+                    <i class="fas fa-fire"></i>
+                    <div>
+                        <p class="streak-label">Current Streak</p>
+                        <p class="streak-value">12 Days 🔥</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h2 class="page-title">Dashboard</h2>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses, topics, mentors..." id="search-input">
+                </div>
+                <div class="header-right">
+                    <button class="icon-btn" id="notification-btn" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="icon-btn" id="calendar-btn" aria-label="Calendar">
+                        <i class="fas fa-calendar-alt"></i>
+                    </button>
+                    <div class="user-profile" id="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Ishika+Sharma&background=6366f1&color=fff&size=128&bold=true" alt="Ishika Sharma" class="avatar">
+                        <div class="user-info">
+                            <span class="user-name">Ishika Sharma</span>
+                            <span class="user-role">SDE Track</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-area">
+
+                <!-- Welcome Banner -->
+                <section class="welcome-banner" aria-label="Welcome Banner">
+                    <div class="banner-content">
+                        <div class="banner-text">
+                            <p class="greeting">Good Evening 🌙</p>
+                            <h1>Welcome back, Ishika!</h1>
+                            <p class="sub-text">You're making great progress. Keep pushing — you're in the top <strong>15%</strong> of your batch!</p>
+                            <div class="overall-progress">
+                                <div class="progress-labels">
+                                    <span>Overall Course Completion</span>
+                                    <span class="progress-percent">67%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 67%"></div>
+                                </div>
+                            </div>
+                            <div class="banner-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>124</strong> Problems Solved</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span><strong>48h</strong> Watch Time</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-star"></i>
+                                    <span><strong>4.8</strong> Avg Score</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="banner-illustration">
+                            <div class="circle-progress-wrapper">
+                                <svg class="circle-svg" viewBox="0 0 120 120">
+                                    <defs>
+                                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#6366f1"/>
+                                            <stop offset="100%" style="stop-color:#a78bfa"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="circle-bg" cx="60" cy="60" r="52"/>
+                                    <circle class="circle-bar" cx="60" cy="60" r="52" stroke-dasharray="327" stroke-dashoffset="108" stroke="url(#grad)"/>
+                                </svg>
+                                <div class="circle-center">
+                                    <span class="circle-percent">67%</span>
+                                    <span class="circle-label">Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Grid Layout for cards -->
+                <div class="cards-grid">
+
+                    <!-- Next Live Class Card -->
+                    <section class="live-class-card card" aria-label="Next Live Class">
+                        <div class="card-header">
+                            <h3><i class="fas fa-broadcast-tower pulse-icon"></i> Next Live Class</h3>
+                            <span class="live-tag">UPCOMING</span>
+                        </div>
+                        <div class="class-info">
+                            <div class="class-topic">
+                                <h4>System Design: Microservices &amp; APIs</h4>
+                                <p class="instructor"><i class="fas fa-user-circle"></i> Anshuman Singh — Principal Engineer</p>
+                            </div>
+                            <div class="class-meta">
+                                <div class="meta-item">
+                                    <i class="far fa-clock"></i>
+                                    <span>Today, 8:00 PM IST</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>342 enrolled</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-hourglass-half"></i>
+                                    <span>Starts in 1h 32m</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="join-btn" id="join-btn">
+                            <i class="fas fa-play-circle"></i>
+                            Join Now
+                        </button>
+                    </section>
+
+                    <!-- Quick Stats Card -->
+                    <section class="quick-stats card" aria-label="Quick Stats">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> This Week</h3>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-icon blue"><i class="fas fa-code"></i></div>
+                                <div>
+                                    <p class="stat-num">18</p>
+                                    <p class="stat-desc">Problems Solved</p>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon green"><i class="fas fa-play"></i></div>
+                                <div>
+                                    <p class="stat-num">6h 40m</p>
+                                    <p class="stat-desc">Watch Time</p>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon purple"><i class="fas fa-video"></i></div>
+                                <div>
+                                    <p class="stat-num">4</p>
+                                    <p class="stat-desc">Classes Attended</p>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon orange"><i class="fas fa-comments"></i></div>
+                                <div>
+                                    <p class="stat-num">12</p>
+                                    <p class="stat-desc">Forum Posts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Recent Modules Grid -->
+                <section class="recent-modules" aria-label="Recent Modules">
+                    <div class="section-header">
+                        <h3><i class="fas fa-layer-group"></i> Recent Modules</h3>
+                        <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="modules-grid">
+
+                        <article class="module-card" id="module-1">
+                            <div class="module-icon-wrap react">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="module-details">
+                                <h4>Advanced React Patterns</h4>
+                                <p>Hooks, Context API, Performance</p>
+                                <div class="module-progress">
+                                    <div class="progress-bar-track">
+                                        <div class="progress-bar-fill" style="width: 80%"></div>
+                                    </div>
+                                    <span>80%</span>
+                                </div>
+                                <div class="module-footer">
+                                    <span class="module-status completed"><i class="fas fa-check"></i> 16/20 Lessons</span>
+                                    <span class="resume-link">Resume →</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="module-card" id="module-2">
+                            <div class="module-icon-wrap node">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="module-details">
+                                <h4>Node.js Microservices</h4>
+                                <p>Express, Docker, REST APIs</p>
+                                <div class="module-progress">
+                                    <div class="progress-bar-track">
+                                        <div class="progress-bar-fill amber" style="width: 45%"></div>
+                                    </div>
+                                    <span>45%</span>
+                                </div>
+                                <div class="module-footer">
+                                    <span class="module-status in-progress"><i class="fas fa-spinner"></i> 9/20 Lessons</span>
+                                    <span class="resume-link">Resume →</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="module-card" id="module-3">
+                            <div class="module-icon-wrap db">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="module-details">
+                                <h4>Database Design &amp; SQL</h4>
+                                <p>PostgreSQL, Indexing, Normalization</p>
+                                <div class="module-progress">
+                                    <div class="progress-bar-track">
+                                        <div class="progress-bar-fill green" style="width: 60%"></div>
+                                    </div>
+                                    <span>60%</span>
+                                </div>
+                                <div class="module-footer">
+                                    <span class="module-status in-progress"><i class="fas fa-spinner"></i> 12/20 Lessons</span>
+                                    <span class="resume-link">Resume →</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="module-card" id="module-4">
+                            <div class="module-icon-wrap dsa">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="module-details">
+                                <h4>DSA: Trees &amp; Graphs</h4>
+                                <p>BFS, DFS, Dijkstra, Trie</p>
+                                <div class="module-progress">
+                                    <div class="progress-bar-track">
+                                        <div class="progress-bar-fill pink" style="width: 30%"></div>
+                                    </div>
+                                    <span>30%</span>
+                                </div>
+                                <div class="module-footer">
+                                    <span class="module-status in-progress"><i class="fas fa-spinner"></i> 6/20 Lessons</span>
+                                    <span class="resume-link">Resume →</span>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
