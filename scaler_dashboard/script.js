@@ -1,24 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ── Join Now button alert ──
+    /* ── Animate all progress bars on load ── */
+    document.querySelectorAll('[data-width]').forEach(el => {
+        setTimeout(() => { el.style.width = el.dataset.width; }, 300);
+    });
+
+    /* ── Join Now button ── */
     const joinBtn = document.getElementById('join-btn');
     if (joinBtn) {
         joinBtn.addEventListener('click', () => {
-            alert('🚀 Connecting you to the live class session!\n\nSystem Design: Microservices & APIs\nInstructor: Anshuman Singh\nTime: Today, 8:00 PM IST');
+            alert('Joining your live class…\n\nSystem Design: Microservices & APIs\nInstructor: Anshuman Singh\nToday, 8:00 PM IST');
         });
     }
 
-    // ── Active nav link highlight ──
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
+    /* ── Active nav switching ── */
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', e => {
             e.preventDefault();
-            navItems.forEach(n => n.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             item.classList.add('active');
+            // close sidebar on mobile after click
+            document.getElementById('sidebar').classList.remove('open');
         });
     });
 
-    // ── Notification button ──
+    /* ── Mobile sidebar toggle ── */
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar    = document.getElementById('sidebar');
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // close sidebar when clicking outside on mobile
+        document.addEventListener('click', e => {
+            if (window.innerWidth <= 768 &&
+                !sidebar.contains(e.target) &&
+                !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+    }
+
+    /* ── Notification button ── */
     const notifBtn = document.getElementById('notification-btn');
     if (notifBtn) {
         notifBtn.addEventListener('click', () => {
@@ -26,21 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Module card hover animation ──
-    const moduleCards = document.querySelectorAll('.module-card');
-    moduleCards.forEach(card => {
+    /* ── Module card click ── */
+    document.querySelectorAll('.module-card').forEach(card => {
         card.addEventListener('click', () => {
             const title = card.querySelector('h4').textContent;
-            alert(`📚 Opening module: ${title}`);
+            alert('📚 Opening: ' + title);
         });
-    });
-
-    // ── Animate progress bars on load ──
-    const fills = document.querySelectorAll('.progress-bar-fill, .progress-fill');
-    fills.forEach(fill => {
-        const targetWidth = fill.style.width;
-        fill.style.width = '0%';
-        setTimeout(() => { fill.style.width = targetWidth; }, 200);
     });
 
 });

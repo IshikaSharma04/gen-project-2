@@ -37,7 +37,12 @@ async function writeFile(args) {
             const dir = pathParts.slice(0, -1).join('/');
             await fs.mkdir(dir, { recursive: true });
         }
-        await fs.writeFile(args.filePath, args.content);
+        // Process escape sequences so mock-agent content writes real newlines/tabs/quotes
+        const content = args.content
+            .replace(/\\n/g, '\n')
+            .replace(/\\t/g, '\t')
+            .replace(/\\"/g, '"');
+        await fs.writeFile(args.filePath, content);
         return `File ${args.filePath} written successfully.`;
     } catch (e) {
         return `Error writing file: ${e.message}`;
