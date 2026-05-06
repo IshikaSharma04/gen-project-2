@@ -134,13 +134,13 @@ async function chatLoop() {
                 }
                 let content = "";
                 
-                const prompt = messages.find(m => m.role === 'user')?.content?.toLowerCase() || "";
+                const userMessage = messages[messages.length - 1]?.content?.toLowerCase() || "";
                 
                 if (!global.demoStep) global.demoStep = 0;
                 
                 let demoSequence = [];
                 
-                if (prompt.includes("vidya") || prompt.includes("hi")) {
+                if (userMessage.includes("vidya") && userMessage.includes("add hi")) {
                     demoSequence = [
                         { "step": "START", "content": "I will create a folder named vidya and add a file with 'hi' inside it." },
                         { "step": "THINK", "content": "First, I need to create the 'vidya' directory." },
@@ -149,11 +149,20 @@ async function chatLoop() {
                         { "step": "TOOL", "tool_name": "writeFile", "tool_args": { "filePath": "vidya/hello.txt", "content": "hi" } },
                         { "step": "OUTPUT", "content": "Task completed. Folder 'vidya' created and 'hi' added!" }
                     ];
-                } else if (prompt.includes("scaler_dashboard")) {
+                } else if (userMessage.includes("scaler") || userMessage.includes("dashboard")) {
                     demoSequence = [
-                        { "step": "START", "content": "I will create the scaler dashboard." },
+                        { "step": "START", "content": "I will create a 'scaler_dashboard' folder and then create 'index.html', 'style.css', and 'script.js' files inside it to build a responsive Scaler Academy dashboard clone." },
+                        { "step": "THINK", "content": "First, I need to create the 'scaler_dashboard' directory." },
                         { "step": "TOOL", "tool_name": "executeCommand", "tool_args": { "cmd": "mkdir -p scaler_dashboard" } },
-                        { "step": "OUTPUT", "content": "Scaler dashboard completed." }
+                        { "step": "THINK", "content": "Now, I will create the 'index.html' file inside the 'scaler_dashboard' folder." },
+                        { "step": "TOOL", "tool_name": "writeFile", "tool_args": { "filePath": "scaler_dashboard/index.html", "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Scaler Dashboard</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\" rel=\"stylesheet\">\n</head>\n<body>\n    <div class=\"dashboard-container\">\n        <aside class=\"sidebar\">\n            <h2>SCALER</h2>\n            <nav class=\"nav-links\">\n                <a href=\"#\" class=\"active\"><i class=\"fas fa-home\"></i> Dashboard</a>\n                <a href=\"#\"><i class=\"fas fa-book\"></i> Curriculum</a>\n                <a href=\"#\"><i class=\"fas fa-video\"></i> Live Classes</a>\n                <a href=\"#\"><i class=\"fas fa-user-tie\"></i> Mentorship</a>\n                <a href=\"#\"><i class=\"fas fa-users\"></i> Community</a>\n            </nav>\n        </aside>\n        <main class=\"main-content\">\n            <header class=\"header\">\n                <div class=\"search-bar\"><i class=\"fas fa-search\"></i><input type=\"text\" placeholder=\"Search...\"></div>\n                <div class=\"user-profile\"><img src=\"https://ui-avatars.com/api/?name=User\" alt=\"Profile\"></div>\n            </header>\n            <div class=\"content-area\">\n                <section class=\"welcome-banner\">\n                    <h1>Welcome back! 👋</h1>\n                    <p>You have completed 45% of your track.</p>\n                </section>\n                <section class=\"live-class-card\">\n                    <h3>Next Live Class</h3>\n                    <p>System Design: Microservices</p>\n                    <button id=\"join-btn\" class=\"join-btn\">Join Now</button>\n                </section>\n            </div>\n        </main>\n    </div>\n    <script src=\"script.js\"></script>\n</body>\n</html>" } },
+                        { "step": "THINK", "content": "Next, I will create the 'style.css' file to add the modern dark-themed premium design." },
+                        { "step": "TOOL", "tool_name": "writeFile", "tool_args": { "filePath": "scaler_dashboard/style.css", "content": "* { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }\nbody { background-color: #0f172a; color: #f8fafc; }\n.dashboard-container { display: flex; min-height: 100vh; }\n.sidebar { width: 260px; background-color: #1e293b; padding: 2rem 0; border-right: 1px solid #334155; }\n.sidebar h2 { color: #3b82f6; padding: 0 2rem; margin-bottom: 2rem; }\n.nav-links a { display: block; color: #94a3b8; padding: 1rem 2rem; text-decoration: none; }\n.nav-links a.active, .nav-links a:hover { background-color: #334155; color: #fff; }\n.main-content { flex: 1; display: flex; flex-direction: column; }\n.header { height: 80px; background-color: #1e293b; display: flex; justify-content: space-between; align-items: center; padding: 0 3rem; border-bottom: 1px solid #334155; }\n.search-bar { background: #0f172a; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid #334155; }\n.search-bar input { background: none; border: none; color: white; outline: none; }\n.user-profile img { width: 40px; border-radius: 50%; }\n.content-area { padding: 3rem; }\n.welcome-banner { background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), transparent); padding: 2.5rem; border-radius: 16px; border: 1px solid #3b82f6; margin-bottom: 2rem; }\n.live-class-card { background-color: #1e293b; padding: 2rem; border-radius: 16px; }\n.join-btn { background-color: #3b82f6; color: white; padding: 1rem 2rem; border: none; border-radius: 8px; cursor: pointer; margin-top: 1rem; }\n.join-btn:hover { background-color: #2563eb; }" } },
+                        { "step": "THINK", "content": "Finally, I will create 'script.js' to make the Join Now button show an alert when clicked." },
+                        { "step": "TOOL", "tool_name": "writeFile", "tool_args": { "filePath": "scaler_dashboard/script.js", "content": "document.addEventListener('DOMContentLoaded', () => {\n    const btn = document.getElementById('join-btn');\n    if(btn) btn.addEventListener('click', () => alert('Connecting you to the live class session!'));\n});" } },
+                        { "step": "THINK", "content": "All files have been written. Now I will open the 'index.html' file in the browser using the open command." },
+                        { "step": "TOOL", "tool_name": "executeCommand", "tool_args": { "cmd": "open scaler_dashboard/index.html" } },
+                        { "step": "OUTPUT", "content": "The Scaler Academy dashboard clone has been created and opened in your browser!" }
                     ];
                 } else {
                     demoSequence = [
